@@ -35,10 +35,10 @@
     font-size: 0.95em;
   }
   .fixed-width {
-    width: 600px; /* Set your desired fixed width */
-    margin: 20px auto; /* Center the container horizontally and add top/bottom margin */
+    width: 400px; /* Set your desired fixed width */
+    margin: 40px auto; /* Center the container horizontally and add top/bottom margin */
     background-color: rgba(243, 192, 134, 0.966); /* Ensure background matches blog1.html */
-    padding: 20px; /* Add padding for better spacing */
+    padding: 40px; /* Add padding for better spacing */
     box-sizing: border-box; /* Include padding within the total width */
     border-radius: 8px; /* Optional: Rounded corners for aesthetics */
     font-size: 1.1em; /* Optional: Adjust font size for readability */
@@ -143,7 +143,7 @@
   </ul>
   <p>Choosing the right set of biological features—from fine-grained nucleotide patterns in the gRNA to broader aspects of genomic and chromatin context—is essential for building accurate and reliable ML models in the CRISPR domain. By representing these biological dimensions, we ensure that a model’s predictions are grounded in molecular biology. In an upcoming post, I will also provide resources on where to find data to help retrieve this information.</p>
 
-  <h1>What ML models are commonly used for CRISPR research and why?</h1>
+  <h2>What ML models are commonly used for CRISPR research and why?</h2>
   <p>The structure of an ML model matters. Previous research offers guidance on architectures commonly used for CRISPR data.</p>
 
   <p><strong>Regression-based algorithms</strong> are widely used in CRISPR ML:</p>
@@ -179,7 +179,7 @@
 
   <p>Most existing models were developed for CRISPRko or CRISPRi applications, both of which aim to reduce gene expression. The shared mechanistic endpoint (gene repression) allows predictive tools trained on CRISPRko data to translate relatively well to CRISPRi data. Designing guides for CRISPRa, however, is more challenging. Enhancing gene expression involves a more complex interplay of chromatin states, transcription factors, and promoter dynamics, and there is generally less training data available for this modality.</p>
 
-  <h1>What Tools Can We Use to Understand the Model?</h1>
+  <h2>What Tools Can We Use to Understand the Model?</h2>
   <p>Building an accurate ML model is only part of the solution. Interpreting its predictions—understanding which factors drive guide efficacy—can influence experimental design and downstream applications. In the CRISPR domain, knowing why the model rates certain guides as highly efficient (or not) can inform the next round of guide design, highlight previously overlooked biological factors, and provide confidence when introducing these tools into real-world workflows.</p>
 
   <p><strong>SHAP (SHapley Additive exPlanations) Values:</strong><br/>
@@ -188,7 +188,7 @@
   <p><strong>Other Interpretability Methods:</strong><br/>
   Tools like LIME (Local Interpretable Model-Agnostic Explanations) or attention-based visualization in neural networks can also provide insights into model behavior.</p>
 
-  <h1>Upcoming Post</h1>
+  <h2>Upcoming Post</h2>
   <p>The foundation of any ML model is high-quality data. In the context of CRISPR research, datasets are often referred to as libraries or screens. These datasets are crucial for training models to predict outcomes such as gRNA efficiency or specificity.</p>
 
   <p>In the upcoming post, I will explore the types of data commonly used to train ML models for CRISPR applications. This will include:</p>
