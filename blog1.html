@@ -34,6 +34,29 @@
     font-family: Consolas, monospace;
     font-size: 0.95em;
   }
+  .fixed-width {
+    width: 600px; /* Set your desired fixed width */
+    margin: 20px auto; /* Center the container horizontally and add top/bottom margin */
+    background-color: rgba(243, 192, 134, 0.966); /* Ensure background matches blog1.html */
+    padding: 20px; /* Add padding for better spacing */
+    box-sizing: border-box; /* Include padding within the total width */
+    border-radius: 8px; /* Optional: Rounded corners for aesthetics */
+    font-size: 1.1em; /* Optional: Adjust font size for readability */
+    line-height: 1.5; /* Optional: Improve text readability */
+    overflow: hidden; /* Prevent overflow */
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-overflow: ellipsis; /* Add ellipsis if text overflows */
+}
+
+/* Optional: Allow some flexibility on very small screens */
+@media (max-width: 620px) {
+    .fixed-width {
+        width: 90%; /* Adjust width for smaller screens */
+        white-space: normal; /* Allow text to wrap on small screens */
+        overflow: visible; /* Allow overflow if necessary */
+        text-overflow: clip; /* Remove ellipsis on small screens */
+    }
+}
 </style>
 </head>
 <body>
