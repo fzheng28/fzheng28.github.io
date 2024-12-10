@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CRISPR Training Data</title>
+<style>
+  body {
+    background-color: rgba(243, 192, 134, 0.966);
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    line-height: 1.6;
+  }
+  h1, h2, h3, h4 {
+    font-family: Arial, sans-serif;
+    margin-top: 1.4em;
+  }
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+  ul ul {
+    list-style-type: circle;
+    margin-left: 40px;
+  }
+  a.back-button {
+    background-color: #ffeacb;
+    color: rgb(0, 0, 0);
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    display: inline-block;
+  }
+  a.back-button:hover {
+    background-color: #f58d0d;
+  }
+  code {
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+    font-family: Consolas, monospace;
+  }
+</style>
+</head>
+<body>
+
+<!-- Button to go back to index.html -->
+<a href="index.html" class="back-button">Back to Blog Page</a>
+
+<h1>In-Depth Analysis of CRISPR ML Models and Data</h1>
+<p>In my previous blog, I discussed the application of machine learning (ML) in CRISPR. Beyond model architecture and feature selection, the foundation of any robust ML model lies in its data—captured perfectly by the phrase “garbage in, garbage out.” In the context of CRISPR research, the datasets used to train ML models are instrumental in ensuring accurate predictions and actionable insights. Often referred to as libraries or screens, these datasets are the backbone of CRISPR ML.</p>
+
+<p>This blog focuses specifically on bulk CRISPR screens and aims to answer the following questions:</p>
+<ul>
+  <li>What are the types of common CRISPR screens?</li>
+  <li>Which data should we use to train and why?</li>
+  <li>Where can you find these datasets? (I’ve curated a detailed list of literature and resources to guide researchers in data exploration.)</li>
+  <li>How can alternative datasets provide complementary information and potential features?</li>
+</ul>
+
+<p>Feel free to reach out with questions or comments!</p>
+
+<h2>What Are the Types of Common CRISPR Screens?</h2>
+<p>CRISPR screens can be broadly categorized into two types: Genome-Wide (GW) Screens and Tiling Screens. These two approaches offer complementary insights and have distinct biological and technical considerations.</p>
+
+<h3>GW Screens</h3>
+<p>GW screens use a limited number of gRNAs (typically 3–10) to target each protein-coding gene in the genome.</p>
+<ul>
+  <li>These screens provide comprehensive coverage across the genome, enabling researchers to study all protein-coding genes simultaneously.</li>
+  <li>Guides in GW libraries are carefully curated to ensure on-target efficacy and minimize off-target effects. However, this selection process may introduce biases by excluding guides targeting certain sequences.</li>
+</ul>
+
+<h3>Tiling Screens</h3>
+<p>Tiling screens target every possible sequence in a defined genomic region or a limited number of genes (usually 1–400).</p>
+<ul>
+  <li>Unlike GW screens, tiling datasets provide high-resolution data within specific regions or genes. By targeting every potential sequence, tiling screens offer a detailed understanding of gene regulation, splicing, or promoter activity.</li>
+  <li>Because tiling screens exhaustively target all possible guides, they eliminate gRNA selection bias and capture a broader range of biological effects within genes.</li>
+</ul>
+
+<p>GW and tiling screens serve as complementary tools in CRISPR research. While GW screens provide a macroscopic view of the genome, enabling the identification of key genes and pathways, tiling screens offer a microscopic lens, revealing detailed functional landscapes within specific genomic regions.</p>
+
+<h2>Which Data Should We Use to Train and Why?</h2>
+<p>Tiling datasets are usually preferred for training purposes due to their comprehensive coverage of individual genes. They provide granular data on guide efficacy within specific genomic contexts, which is essential for developing models that can accurately predict optimal gRNA performance. While offering broad genomic coverage, GW datasets typically provide limited depth of information for individual genes. This makes them less suitable for training models that require detailed insights into gene-specific guide efficacy.</p>
+
+<h2>Where Can You Find These Datasets?</h2>
+<p>Usually, you can find published libraries; however, if you need specific data, you can contact research labs or platforms for collaboration. Below, I have curated some literature that contains data for Bulk CRISPR Cas9 screens that people use to train CRISPR ML models:</p>
+
+<ul>
+  <li><strong>Knockout</strong> (Added upon supplementary data from <em>Accounting for small variations in the tracrRNA sequence improves sgRNA activity predictions for CRISPR screening</em>): <a href="https://docs.google.com/spreadsheets/d/1oam4WVQo85yFfjbdAcTtzUXPv6nQYVg7r1abd0So38o/edit?usp=sharing">Knockout Dataset</a></li>
+  <li><strong>Interference:</strong> <a href="https://docs.google.com/spreadsheets/d/1n429WN39hCqJHnN-GHW3zFoH4b0-eubFxrbjR65Q_8c/edit?usp=sharing">Interference Dataset</a></li>
+  <li><strong>Activation:</strong> <a href="https://docs.google.com/spreadsheets/d/1olo3hYDInil1y3dRz2MNrJZAK5hRgayYGQmgYwX8Rfw/edit?usp=sharingk">Activation Dataset</a></li>
+</ul>
+
+<p>Let me know what other papers/datasets I should include in the list!</p>
+
+<h2>Where Can Alternative Datasets Provide Complementary Information for Potential Features?</h2>
+<p>In addition to primary bulk CRISPR screens, incorporating supplementary biological data is essential for enriching ML models. Features such as chromatin accessibility, distance to transcription start sites (TSS), and evolutionary conservation provide critical context that can significantly enhance model performance. Below are key data sources and experimental assays that offer these valuable features, facilitating the creation of more accurate and biologically informed ML models.</p>
+
+<ul>
+  <li><strong>The Encyclopedia of DNA Elements (ENCODE) Consortium</strong>
+    <ul>
+      <li>NHGRI-funded project cataloging functional elements in the human genome</li>
+      <li>Diverse assays, including RNA sequencing, comparative genomics, DNA hypersensitivity mapping, DNA methylation profiling, and chromatin immunoprecipitation</li>
+    </ul>
+  </li>
+  <li><strong>BioMart</strong>
+    <ul>
+      <li>Online data management tool for querying, filtering, and exporting large-scale genomic and biological datasets</li>
+      <li>Provides access to detailed gene annotations, including gene start, gene end, chromosome, and transcript variants.</li>
+    </ul>
+  </li>
+  <li><strong>UCSC Genome Browser</strong>
+    <ul>
+      <li>Web-based interface for visualizing and exploring genomic data across multiple species hosted by The Genome Bioinformatics Group at the University of California, Santa Cruz</li>
+      <li>Provides layered data tracks including gene annotations, epigenetic marks, and TSS</li>
+    </ul>
+  </li>
+  <li><strong>CRISPick</strong>
+    <ul>
+      <li>Created and maintained by The Broad Institute’s Genetic Perturbation Platform (GPP) research team</li>
+      <li>Computational tool for selecting and evaluating gRNAs for CRISPR experiments</li>
+      <li>Detailed information on the nucleotide context surrounding gRNA</li>
+    </ul>
+  </li>
+</ul>
+
+<h2>Upcoming Post</h2>
+<p>I’d like to share some of the key experiences at Broad that have shaped my career and what I'm working on right now!</p>
+
+<!-- Button to go back to index.html -->
+<!-- <a href="index.html" class="back-button">Back to Blog Page</a> -->
+
+</body>
+</html>
