@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflections on My Time at the Broad Institute</title>
+    <style>
+  .back-button {
+    background-color: #ffeacb;
+    color: rgb(0, 0, 0);
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    display: inline-block;
+  }
+  .back-button:hover {
+    background-color: #f58d0d;
+  }
+  body {
+    background-color: rgba(243, 192, 134, 0.966);
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, sans-serif;
+  }
+  code {
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+    font-family: Consolas, monospace;
+    font-size: 0.95em;
+  }
+  .fixed-width {
+    width: 400px; /* Set your desired fixed width */
+    margin: 40px auto; /* Center the container horizontally and add top/bottom margin */
+    background-color: rgba(243, 192, 134, 0.966); /* Ensure background matches blog1.html */
+    padding: 40px; /* Add padding for better spacing */
+    box-sizing: border-box; /* Include padding within the total width */
+    border-radius: 8px; /* Optional: Rounded corners for aesthetics */
+    font-size: 1.1em; /* Optional: Adjust font size for readability */
+    line-height: 1.5; /* Optional: Improve text readability */
+    overflow: hidden; /* Prevent overflow */
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-overflow: ellipsis; /* Add ellipsis if text overflows */
+}
+
+/* Optional: Allow some flexibility on very small screens */
+@media (max-width: 620px) {
+    .fixed-width {
+        width: 90%; /* Adjust width for smaller screens */
+        white-space: normal; /* Allow text to wrap on small screens */
+        overflow: visible; /* Allow overflow if necessary */
+        text-overflow: clip; /* Remove ellipsis on small screens */
+    }
+}
+    </style>
+</head>
+<body>
+    <a href="index.html#blog" class="back-button">Back to Blog Page</a>
+
+
+    <h1>Reflections on My Time at the Broad Institute</h1>
+
+    <p>The Broad Institute is one of the world’s best scientific research institutions, redefining how science is conducted and setting a new standard for the future of biomedical discovery. From pioneering contributions to human genome research to advancements in CRISPR gene-editing technology and transformative work in cancer genomics, the Broad has consistently pushed the boundaries of what is possible in science.</p>
+
+    <p>I joined the Broad in the fall of 2021, during the height of the COVID-19 pandemic, and stayed until November 2024, when I left to pursue my startup full-time. My time there was nothing short of transformative, both professionally and personally.</p>
+
+    <h2>Why I Joined</h2>
+
+    <p>Science is about solving meaningful problems, and Broad offered the perfect environment for me to do just that. In particular, CRISPR was a tool that could directly impact human lives by offering hope for conditions previously thought untreatable.</p>
+
+    <p>As a statistics major with no formal biology background, my career path could have easily gone toward tech, finance, or consulting—fields where many of my peers gravitated. In fact, I had interned in a variety of industries to explore my options. But the pandemic influenced my perspective. Watching healthcare workers and researchers step up fearlessly to save lives inspired me to pivot toward biomedicine. I wanted to understand the science that made such interventions possible and contribute to work that could tangibly improve people’s health and well-being.</p>
+
+    <h2>My Experience at Broad</h2>
+
+    <p>When I joined the Broad’s Genetic Perturbation Platform (GPP) R&D team, led by John Doench, and the Broad Biomedical Post-Baccalaureate Scholars program, I found myself surrounded by passionate, rigorous, and curious individuals. Working with talented scientists, engineers, and computational experts, I contributed to projects spanning functional genomics, CRISPR technology development, and high-throughput screening pipelines. Despite my initial lack of a biology background, the collaborative culture helped me bridge the gap and make meaningful contributions.</p>
+
+    <p>One of the most fulfilling aspects of my role was seeing how computational insights translated into real-world impact. Whether it was designing guide RNAs for CRISPR screens or analyzing large-scale data to train ML models on bulk CRISPR screens, I felt connected to the bigger picture of advancing scientific discovery.</p>
+
+    <p>I worked on two main projects at the Broad:</p>
+
+    <div class="project">
+        <h3>Project 1: Optimizing Cas12a CRISPRa</h3>
+        <p class="project-title">(Optimization of Cas12a for Multiplexed Genome-Scale Transcriptional Activation; Co-first on Cell Genomics)</p>
+        
+        <h4>Goal:</h4>
+        <p>The primary objective was to enhance the capabilities of Cas12a for CRISPR activation (CRISPRa) in human cells, enabling the simultaneous activation of multiple genes. Unlike Cas9, Cas12a can process multiple guide RNAs from a single transcript, making it ideal for complex genetic studies. One of the potentials for CRISPRa lies in the Yamanaka factors, which allow…</p>
+        
+        <h4>My Responsibilities:</h4>
+        <ul>
+            <li>Designed and analyzed both the primary and validation genome-wide CRISPRa screens. The screens identified genes that modulate cellular growth and influence sensitivity to MEK inhibition, a key pathway in cancer biology. These screens revealed both selumetinib-sensitizing and resistance genes, providing insights for therapeutic strategies.</li>
+            <li>Built a comprehensive pipeline for bulk RNA-seq data analysis, enabling the identification of hit genes from our screens.</li>
+            <li>Established guidelines for designing effective multiplexed guide RNA arrays. This provided insight that the activity of multiplexed guides is predictable based on the performance of the individual guide that has the strongest efficacy.</li>
+        </ul>
+    </div>
+
+    <div class="project">
+        <h3>Project 2: Cas9 CRISPRi Guide Selection with Machine Learning</h3>
+        
+        <h4>Goal:</h4>
+        <p>The primary objective was to improve guide prediction for Cas9 CRISPR interference (CRISPRi) using Cas9 and to understand the effects of different repression domains on guide selection.</p>
+        
+        <h4>My Responsibilities:</h4>
+        <ul>
+            <li>Collated and cleaned existing CRISPRi tiling libraries and integrated alternative data sources, such as chromatin accessibility assays and gene annotation, to serve as features for the model.</li>
+            <li>Designed and analyzed an in-house CRISPRi tiling library, expanding our toolkit for gene repression studies.</li>
+            <li>Trained a machine learning model tailored for Cas9 CRISPRi.</li>
+            <li>Uncovered key insights into guide efficacy and optimized guide selection criteria.</li>
+        </ul>
+    </div>
+
+    <p>Special thanks to my colleagues at the Broad Institute for their collaboration and support throughout these projects. Your expertise and dedication made these achievements possible.</p>
+
+    <h2>Transition Point and Looking Ahead</h2>
+
+    <p>When I first joined the Broad Institute, I envisioned pursuing a PhD after two years at Broad—a common trajectory for many Broadies. Typically, individuals join Broad straight out of their undergraduate studies, spend 2–3 years honing their skills, and then pursue doctoral studies. By the end of my first year, I began preparing my graduate school applications, aligning with what seemed like the natural next step.</p>
+
+    <p>Near the end of 2022, I received my first acceptance to a graduate program that I genuinely liked (and it was my close friend’s alma mater!). While I felt a sense of happiness, there was no accompanying relief. As the decision deadline of April 15, 2023, approached—a time when most must commit to one of their accepted programs—the persistent feeling of being unsatisfied intensified. It was as if I could glimpse my future unfolding, yet something didn’t quite align with the path I wanted to be on.</p>
+
+    <p>This internal conflict became a turning point. I realized that my passion lay not just in academic research. I wanted more than having names on research papers; I wanted to build something people need and want. After over a year of learning about different fields, the prospect of founding a startup, where I could directly influence the direction and application of my work, began to feel more compelling than the traditional academic route. This decision wasn’t easy, but it was clear that to fully realize my potential and make a tangible impact, I needed to take a different path.</p>
+
+    <p>Forgoing a PhD program and leaving Broad was a significant shift, but it opened the door to exciting new opportunities. As I embark on this new journey, I can’t wait to keep you updated on the progress and innovations of my startup!</p>
+
+</body>
+</html>
