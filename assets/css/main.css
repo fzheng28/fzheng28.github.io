@@ -671,8 +671,9 @@ input, select, textarea {
 		}
 
 		.image img {
-			width: 100%; /* Make the image responsive */
-			height: auto; /* Maintain aspect ratio */
+			max-width: 100%;  /* Let the image shrink to fit its container */
+			height: auto;     /* Maintain aspect ratio */
+			display: block;   /* Remove any inline spacing below the image */
 		  }
 
 		.image.left, .image.right {
@@ -695,12 +696,13 @@ input, select, textarea {
 			top: 0.25em;
 		} */
 		@media screen and (max-width: 736px) {
-			.image.left, .image.right {
-			  float: none;
-			  top: auto;  /* remove the vertical shift */
-			  max-width: 100%; /* let it scale to full width */
-			  margin: 0 auto;   /* center it if desired */
-			  padding: 1rem 0;  /* you can still add some spacing around */
+			.image.left,
+			.image.right {
+			  float: none;       /* Cancel the float */
+			  max-width: 100%;   /* Allow full width if you want */
+			  margin: 1rem auto; /* Center it (optional), add vertical spacing */
+			  top: auto;         /* Remove any manual top offset */
+			  padding: 0;        /* Remove float-based padding */
 			}
 		  }
 		  
@@ -1476,8 +1478,7 @@ input, select, textarea {
 			}
 
 				#header > *:before {
-					top: calc(-2rem - 1px);
-					height: calc(2rem + 1px);
+					display: none; /* Hide line on small screens */
 				}
 
 			#header .logo {
