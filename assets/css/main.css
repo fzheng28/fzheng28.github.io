@@ -1706,3 +1706,21 @@ input, select, textarea {
 		#hobby .image:before {
 			display: none; /* Hides the overlay for the hobby image */
 		}
+
+		@media screen and (max-width: 736px) {
+			#header > *:before {
+			  background: none !important;
+			  display: none !important;
+			}
+			#header .content {
+			  border: none !important;
+			}
+			.image:before {
+			  display: none !important;
+			}
+			.image img {
+			  max-width: 100% !important;
+			  height: auto !important;
+			}
+		  }
+		  
