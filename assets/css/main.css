@@ -291,6 +291,11 @@ input, select, textarea {
 	hr {
 		margin: 2rem 0;
 	  }
+	@media screen and (max-width: 736px) {
+		hr {
+		  margin: 2rem 0;
+		}
+	}
 	  
 
 	.align-left {
@@ -695,14 +700,12 @@ input, select, textarea {
 			top: 0.25em;
 		} */
 		@media screen and (max-width: 736px) {
-			.image.left,
-			.image.right {
-			  float: none;       /* Cancel the float */
-			  max-width: 100%;   /* Allow full width if you want */
-			  margin: 1rem auto; /* Center it (optional), add vertical spacing */
-			  top: auto;         /* Remove any manual top offset */
-			  padding: 0;        /* Remove float-based padding */
-			}
+			.image.left, .image.right {
+				float: none !important;
+				max-width: 100% !important;
+				margin: 1em auto !important;
+				padding: 0 !important;
+			  }
 		  }
 		  
 		.image.fit {
@@ -1476,9 +1479,9 @@ input, select, textarea {
 				margin-top: 2rem;
 			}
 
-				#header > *:before {
-					display: none; /* Hide line on small screens */
-				}
+			#header > *:before {
+				display: none !important; /* Hide it on small screens */
+			  }
 
 			#header .logo {
 				width: 4.75rem;
