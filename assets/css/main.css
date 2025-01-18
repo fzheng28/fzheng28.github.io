@@ -289,8 +289,7 @@ input, select, textarea {
 		margin: 2.75rem 0;
 	} */
 	hr {
-		position: relative;
-		z-index: 0; /* Ensure it stays behind the image */
+		margin: 2rem 0;
 	  }
 	  
 
