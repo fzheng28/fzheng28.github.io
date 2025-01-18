@@ -1349,8 +1349,10 @@ input, select, textarea {
 			  /* Then override for smaller screens if you want it even smaller than 100% */
 			  @media screen and (max-width: 736px) {
 				#header .logo img {
-				  max-width: 70% !important; /* Shrink it to 70%, for example */
-				  margin: 0 auto !important; /* Force centering */
+				  max-width: 70% !important;
+				  height: auto !important;
+				  display: block !important;
+				  margin: 0 auto !important;
 				}
 			  }
 		#header .content {
