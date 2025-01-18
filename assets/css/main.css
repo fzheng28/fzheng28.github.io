@@ -673,7 +673,7 @@ input, select, textarea {
 				width: 100%;
 			}
 
-		.image.left {
+		/* .image.left {
 			float: left;
 			padding: 0 1.5em 1em 0;
 			top: 0.25em;
@@ -683,8 +683,17 @@ input, select, textarea {
 			float: right;
 			padding: 0 0 1em 1.5em;
 			top: 0.25em;
-		}
-
+		} */
+		@media screen and (max-width: 736px) {
+			.image.left, .image.right {
+			  float: none;
+			  top: auto;  /* remove the vertical shift */
+			  max-width: 100%; /* let it scale to full width */
+			  margin: 0 auto;   /* center it if desired */
+			  padding: 1rem 0;  /* you can still add some spacing around */
+			}
+		  }
+		  
 		.image.fit {
 			display: block;
 			margin: 0 0 2rem 0;
