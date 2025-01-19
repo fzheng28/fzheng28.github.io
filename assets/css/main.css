@@ -1360,10 +1360,10 @@ input, select, textarea {
 				#header > *:before {
 				  display: none !important;
 				}
-				/* Remove the top/bottom border in .content if that's the line */
+				/* Remove the top/bottom border in .content if that's the line
 				#header .content {
 				  border: none !important;
-				}
+				} */
 			  }
 			  
 		#header .content {
@@ -1727,7 +1727,7 @@ input, select, textarea {
 			display: none; /* Hides the overlay for the hobby image */
 		}
 
-		@media screen and (max-width: 736px) {
+		/* @media screen and (max-width: 736px) {
 			#header > *:before {
 			  background: none !important;
 			  display: none !important;
@@ -1743,4 +1743,4 @@ input, select, textarea {
 			  height: auto !important;
 			}
 		  }
-		  
+		   */
