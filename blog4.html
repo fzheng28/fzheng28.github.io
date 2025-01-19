@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Machine Learning for CRISPR</title>
+<style>
+    .back-button {
+    background-color: #ffeacb;
+    color: rgb(0, 0, 0);
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    display: inline-block;
+  }
+  .back-button:hover {
+    background-color: #f58d0d;
+  }
+  body {
+    background-color: rgba(243, 192, 134, 0.966);
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, sans-serif;
+  }
+  code {
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+    font-family: Consolas, monospace;
+    font-size: 0.95em;
+  }
+  .fixed-width {
+    width: 400px; /* Set your desired fixed width */
+    margin: 40px auto; /* Center the container horizontally and add top/bottom margin */
+    background-color: rgba(243, 192, 134, 0.966); /* Ensure background matches blog1.html */
+    padding: 40px; /* Add padding for better spacing */
+    box-sizing: border-box; /* Include padding within the total width */
+    border-radius: 8px; /* Optional: Rounded corners for aesthetics */
+    font-size: 1.1em; /* Optional: Adjust font size for readability */
+    line-height: 1.5; /* Optional: Improve text readability */
+    overflow: hidden; /* Prevent overflow */
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-overflow: ellipsis; /* Add ellipsis if text overflows */
+}
+
+/* Optional: Allow some flexibility on very small screens */
+@media (max-width: 620px) {
+    .fixed-width {
+        width: 90%; /* Adjust width for smaller screens */
+        white-space: normal; /* Allow text to wrap on small screens */
+        overflow: visible; /* Allow overflow if necessary */
+        text-overflow: clip; /* Remove ellipsis on small screens */
+    }
+}
+</style>
+</head>
+<body>
+<a href="index.html#blog" class="back-button">Back to Blog Page</a>
+
+  <h1>BioMe’s Value Proposition</h1>
+
+  <p>
+    Clinical trials for neurodegenerative disorders fail to accurately and continuously capture motor function—a key indicator of drug effectiveness. Current approaches rely on subjective patient questionnaires and sporadic in-person assessments that distort the reality of day-to-day impairment. Patients, aware they're being observed, unconsciously adjust their behavior during clinical visits, masking the true impact of their condition.
+  </p>
+
+  <p>
+    For patients, the burden doesn’t stop there. Traveling to clinics is physically exhausting, time-consuming, and costly. These challenges not only erode the patient experience but also inflate trial costs and hinder consistent data collection. With neurodegenerative diseases projected to affect 1 in 10 Americans and impose over $400 billion annually in healthcare costs, it’s clear the current system is unsustainable.
+  </p>
+
+  <p>
+    BioMe is redefining this narrative. Using only a smartphone or computer, patients can record videos of themselves anytime, anywhere—removing the barriers of clinic visits. Our platform employs AI motion tracking and alignment algorithms to analyze motor and speech patterns directly from these videos. By comparing patients’ movements before and after drug treatment, BioMe delivers objective, real-world insights into drug effectiveness that are precise, continuous, and actionable.
+  </p>
+
+  <p>
+    With BioMe, clinical trials become more objective, efficient, and patient-friendly. This not only accelerates drug development but also improves quality of life for patients by enabling remote participation. By bridging the gap between subjective metrics and real-world data, BioMe is empowering the next generation of clinical trials for neurodegenerative disorders.
+  </p>
+
+  <h2>Behind the Scenes: How BioMe Works</h2>
+
+  <p>
+    BioMe uses human pose estimation (HPE) to understand how people move in video. HPE is the task of detecting the location of a person’s body joints (head, shoulders, elbows, wrists, hips, knees, ankles, etc.) in images or video. These detected joints or key points can be connected to form a “skeleton” representing the person’s pose. Once a skeleton is generated, it becomes possible to analyze different motions, postures, or even fine-grained actions. Most current HPE methods focus on 2D pose estimation, which aims to locate the x and y coordinates of each joint in an image. There are two major approaches to 2D pose estimation:
+  </p>
+
+  <h4>Top-Down Approach</h4>
+  <ul>
+    <li>Step 1: Detect humans first (using a person detector).</li>
+    <li>Step 2: For each detected person, run a pose-estimation model that locates each joint.</li>
+  </ul>
+
+  <h4>Bottom-Up Approach</h4>
+  <ul>
+    <li>Step 1: Detect all joints (key points) across the entire image without focusing on individual persons.</li>
+    <li>Step 2: Cluster or associate these joints to form skeletons for each person.</li>
+  </ul>
+
+  <p>
+    In recent years, 3D pose estimation has also gained traction. It extends the predicted coordinates to (x, y, z)—i.e., it includes an additional depth dimension. This can be achieved through multi-view geometry (using multiple cameras), specialized sensors (such as depth cameras), or deep learning models that “lift” 2D key points into 3D.
+  </p>
+
+  <h3>Examples of Pose Estimation Methods</h3>
+
+  <h4>AlphaPose</h4>
+  <p>
+    AlphaPose is a top-down multi-person pose estimation framework that uses a CNN-based detector (often YOLO) to locate each person in an image. Each bounding box is then passed to a dedicated single-person pose estimator, also powered by deep convolutional neural networks, which outputs 2D heatmaps of keypoints (e.g., shoulders, elbows). To refine the resulting poses, AlphaPose applies Parametric Pose NMS, merging overlapping or redundant detections into clean, non-duplicated skeletons. This blend of robust detection and specialized pose estimation achieves high accuracy while maintaining near real-time speed, making AlphaPose particularly effective when bounding-box detection is reliable.
+  </p>
+  <p>
+    <a href="https://github.com/MVIG-SJTU/AlphaPose" target="_blank">GitHub Repository</a>
+  </p>
+
+  <h4>OpenPose</h4>
+  <p>
+    OpenPose adopts a bottom-up strategy, detecting all key points for all individuals at once, then associating them into distinct skeletons. A multi-stage CNN generates Part Confidence Maps (PCMs)—heatmaps signifying each joint’s likelihood at every pixel—and Part Affinity Fields (PAFs), vector fields that encode how joints connect. A bipartite matching process then assigns the correct joints to the correct person. By eliminating the need for a bounding-box detector, OpenPose scales efficiently to multi-person scenarios and can run in real time on typical GPU hardware. Its hallmark contribution is PAFs, which provide robust joint association even in crowded scenes.
+  </p>
+  <p>
+    <a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose" target="_blank">GitHub Repository</a>
+  </p>
+
+  <h4>SAPIENS (Meta’s Reality Labs)</h4>
+  <p>
+    SAPIENS (Meta’s Reality Labs) extends pose estimation into a more elaborate 3D avatar creation approach. Although it may incorporate both top-down and bottom-up techniques, its main goal is to develop photorealistic Codec Avatars via high-fidelity 2D or 3D landmark detection and advanced neural reconstruction. After an initial detection stage to isolate the subject, SAPIENS leverages deep neural networks to capture subtle facial and body details—including micro-expressions and fine-grained geometry—before assembling a lifelike 3D model. Engineered for immersive social VR and telepresence, SAPIENS surpasses standard 2D joint localization to produce an accurate visual representation of a user’s appearance, expressions, and movements.
+  </p>
+  
+  <p>
+    <a href="https://github.com/facebookresearch/sapiens" target="_blank">GitHub Repository</a>
+  </p>
+
+  <h3>Alignment: The Next Step</h3>
+  <p>
+    Pose estimation is just one part of the puzzle. After tracking or labeling a patient’s joints across multiple timestamps, the next critical question is how to compare these poses over time. We need to align two datasets—two sets of poses—into a common coordinate system or reference frame, such as shifting and rotating one pose so it matches a previous snapshot. There are two popular methods:
+  </p>
+
+  <p>
+    Rigid Alignment: Involves rotation, translation, and sometimes uniform scaling, preserving distances and relative angles between points. This approach works well for objects or subjects that do not deform significantly.
+  </p>
+
+  <p>
+    Non-Rigid Alignment: Permits bending, stretching, or warping, which is vital if the subject can bend or change shape (e.g., a flexed joint or soft tissue movement).
+  </p>
+
+  <p>
+    Regardless of whether the alignment is rigid or non-rigid, the basic principle remains: define a measure of similarity or error between the two datasets, then optimize the transformation parameters (such as the rotation matrix, translation vector, or warping parameters) to minimize that error.
+  </p>
+
+  <p>
+    Feel free to reach out at <a href="mailto:fzheng1006@gmail.com">fzheng1006@gmail.com</a> to request a demo!
+  </p>
+
+  <h2>Upcoming Post</h2>
+  <p>
+    I’ll walk through a Python script for training your own model using CNNs to recognize various actions in video footage. Stay tuned!
+  </p>
+
+  <!-- Optional back button at the bottom -->
+  <a href="index.html" class="back-button">Back to Blog Page</a>
+
+</body>
+</html>
