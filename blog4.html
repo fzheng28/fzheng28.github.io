@@ -124,26 +124,31 @@
   <p>
     SAPIENS (Meta’s Reality Labs) extends pose estimation into a more elaborate 3D avatar creation approach. Although it may incorporate both top-down and bottom-up techniques, its main goal is to develop photorealistic Codec Avatars via high-fidelity 2D or 3D landmark detection and advanced neural reconstruction. After an initial detection stage to isolate the subject, SAPIENS leverages deep neural networks to capture subtle facial and body details—including micro-expressions and fine-grained geometry—before assembling a lifelike 3D model. Engineered for immersive social VR and telepresence, SAPIENS surpasses standard 2D joint localization to produce an accurate visual representation of a user’s appearance, expressions, and movements.
   </p>
-  
+  <p>
+    Yet pose estimation alone only answers the where of each joint in a single moment in time. It doesn’t address how those joints evolve over the course of weeks or months—a critical piece in many clinical or research applications. This is where BioMe sets itself apart.
+  </p>
   <p>
     <a href="https://github.com/facebookresearch/sapiens" target="_blank">GitHub Repository</a>
   </p>
 
   <h3>Alignment: The Next Step</h3>
   <p>
-    Pose estimation is just one part of the puzzle. After tracking or labeling a patient’s joints across multiple timestamps, the next critical question is how to compare these poses over time. We need to align two datasets—two sets of poses—into a common coordinate system or reference frame, such as shifting and rotating one pose so it matches a previous snapshot. There are two popular methods:
+    BioMe’s unique value lies in aligning a patient’s pose data across multiple timestamps to quantify meaningful changes. For example, if a patient is receiving physical therapy or taking medications that affect mobility, clinicians want to see how their gait or posture shifts from one appointment to the next. Directly comparing raw x/y coordinates between sessions is often misleading, because the patient’s position or orientation in the video may differ each time.
+  </p>
+  <p>
+    With alignment, BioMe brings each set of pose landmarks into a common coordinate system or reference frame. This could involve:
   </p>
 
   <p>
-    Rigid Alignment: Involves rotation, translation, and sometimes uniform scaling, preserving distances and relative angles between points. This approach works well for objects or subjects that do not deform significantly.
+    Rigid Alignment (also known as Procrustes problem): Rotation, translation, and uniform scaling of all joints while keeping distances and angles intact. This is ideal for subjects that don’t deform significantly.
   </p>
 
   <p>
-    Non-Rigid Alignment: Permits bending, stretching, or warping, which is vital if the subject can bend or change shape (e.g., a flexed joint or soft tissue movement).
+    Non-Rigid Alignment: Allows for bending, stretching, or warping to capture subtle changes (e.g., a flexed joint or soft tissue movement).
   </p>
 
   <p>
-    Regardless of whether the alignment is rigid or non-rigid, the basic principle remains: define a measure of similarity or error between the two datasets, then optimize the transformation parameters (such as the rotation matrix, translation vector, or warping parameters) to minimize that error.
+    By optimizing transformations that minimize alignment error, BioMe can accurately track how joints move over time—even if the person’s stance or camera angle shifts. Clinicians and researchers can then extract quantitative metrics (e.g., changes in stride length, range of motion, or posture stability) to evaluate the impact of therapies or drugs.
   </p>
 
   <p>
