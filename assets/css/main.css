@@ -1690,7 +1690,7 @@ input, select, textarea {
 .blog-timeline {
 	position: relative;
 	margin: 2rem 0;
-	padding: 0 2rem;
+	padding: 0 4rem;
 	list-style: none; /* Removes default bullets */
   }
   
