@@ -404,14 +404,7 @@
     
       <p>Stay tuned for a comprehensive dive into how these screens provide the foundation for CRISPR ML advancements!</p>
     
-      <!-- Post Stats (views + upvote) -->
-      <div class="post-stats">
-        <div class="views" id="viewCount">Views: 1</div>
-
-        <button class="upvote-btn" id="upvoteBtn">Upvote</button>
-        <div class="upvote-count" id="upvoteCount">0</div> Upvotes
-      </div>
-
+      
       <!-- COMMENTS SECTION -->
       <div class="comments">
         <h2>Comments</h2>
@@ -443,61 +436,109 @@
   </div>
 
   <script>
+    // Where is your Node server? On your machine? 
+    const API_BASE = "https://web-backend-j111.onrender.com"; 
+  
     document.addEventListener('DOMContentLoaded', function() {
-      /* ---------- VIEW COUNT (simple local increment) ---------- */
-      let views = 1; 
-      const viewDisplay = document.getElementById('viewCount');
-      // In a real app, you'd fetch from a server or localStorage. 
-      // For now, let's just start at 1 and display it.
-      viewDisplay.textContent = `Views: ${views}`;
-
-      /* ---------- UPVOTE TOGGLE ---------- */
-      let upvotes = 0;
-      let isUpvoted = false; // track if user has upvoted
+      // 1. On page load, increment view count, then load it
+      incrementViewCount();
+      loadViewCount();
+  
+      // 2. Load the upvote count from the server
+      loadUpvoteCount();
+  
+      // 3. Load existing comments from the server
+      loadComments();
+  
+      // 4. Upvote button logic
       const upvoteBtn = document.getElementById('upvoteBtn');
-      const upvoteCount = document.getElementById('upvoteCount');
-
       upvoteBtn.addEventListener('click', function() {
-        if (!isUpvoted) {
-          // Upvote
-          upvotes++;
-          isUpvoted = true;
-          upvoteBtn.textContent = 'Un-Upvote'; // change button label
-        } else {
-          // Un-upvote
-          upvotes--;
-          isUpvoted = false;
-          upvoteBtn.textContent = 'Upvote'; 
-        }
-        upvoteCount.textContent = upvotes;
+        // We'll do an increment approach
+        fetch(`${API_BASE}/api/upvotes`, { method: "POST" })
+          .then(res => res.json())
+          .then(data => {
+            if (data.success) {
+              // update the UI
+              const upvoteCountEl = document.getElementById('upvoteCount');
+              upvoteCountEl.textContent = data.upvoteCount;
+            }
+          })
+          .catch(err => console.error("Upvote error:", err));
       });
-
-      /* ---------- COMMENTS SECTION ---------- */
-      const form = document.getElementById('commentForm');
-      const commentList = document.getElementById('commentList');
-
-      form.addEventListener('submit', function(event) {
+  
+      // 5. Comments form
+      const commentForm = document.getElementById('commentForm');
+      commentForm.addEventListener('submit', function(event) {
         event.preventDefault();
-
         const nameVal = document.getElementById('name').value.trim();
         const commentVal = document.getElementById('comment').value.trim();
-
+  
         if (!nameVal || !commentVal) {
-          alert('Please fill out both the Name and Comment fields.');
+          alert('Please fill out both fields.');
           return;
         }
-
-        const commentDiv = document.createElement('div');
-        commentDiv.classList.add('comment-block');
-        commentDiv.innerHTML = `
-          <strong>${nameVal}</strong>
-          <p>${commentVal}</p>
-        `;
-        commentList.appendChild(commentDiv);
-
-        form.reset();
+  
+        // POST to /api/comments
+        fetch(`${API_BASE}/api/comments`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name: nameVal, comment: commentVal })
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.success) {
+              // reload comments
+              loadComments();
+              commentForm.reset();
+            } else {
+              alert(data.error || "Error posting comment.");
+            }
+          })
+          .catch(err => console.error("Comment post error:", err));
       });
     });
+  
+    // ========== HELPER FUNCTIONS ==========
+  
+    function incrementViewCount() {
+      fetch(`${API_BASE}/api/views/increment`, { method: "POST" })
+        .catch(err => console.error("View increment error:", err));
+    }
+  
+    function loadViewCount() {
+      fetch(`${API_BASE}/api/views`)
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('viewCount').textContent = `Views: ${data.viewCount}`;
+        })
+        .catch(err => console.error("View count error:", err));
+    }
+  
+    function loadUpvoteCount() {
+      fetch(`${API_BASE}/api/upvotes`)
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('upvoteCount').textContent = data.upvoteCount;
+        })
+        .catch(err => console.error("Upvote count error:", err));
+    }
+  
+    function loadComments() {
+      fetch(`${API_BASE}/api/comments`)
+        .then(res => res.json())
+        .then(data => {
+          const commentList = document.getElementById('commentList');
+          commentList.innerHTML = "";
+          data.comments.forEach(c => {
+            const div = document.createElement('div');
+            div.classList.add('comment-block');
+            div.innerHTML = `<strong>${c.name}</strong><p>${c.comment}</p>`;
+            commentList.appendChild(div);
+          });
+        })
+        .catch(err => console.error("Comments load error:", err));
+    }
   </script>
+  
 </body>
 </html>
