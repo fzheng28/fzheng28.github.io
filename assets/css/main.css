@@ -1686,45 +1686,63 @@ input, select, textarea {
 
 		}
 
-/* Footer */
-
-	#footer {
-		-moz-transition: -moz-transform 0.325s ease-in-out, -moz-filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
-		-webkit-transition: -webkit-transform 0.325s ease-in-out, -webkit-filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
-		-ms-transition: -ms-transform 0.325s ease-in-out, -ms-filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
-		transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
-		width: 100%;
-		max-width: 100%;
-		margin-top: 2rem;
-		text-align: center;
+	/* Timeline Container */
+	.blog-timeline {
+		position: relative;       /* Needed for the vertical line */
+		margin: 2rem 0;          /* Some vertical breathing room */
+		padding: 0 1rem;         /* Horizontal padding if desired */
 	}
-
-		#footer .copyright {
-			letter-spacing: 0.2rem;
-			font-size: 0.6rem;
-			opacity: 0.75;
-			margin-bottom: 0;
-			/* text-transform: uppercase; */
-		}
-
-		body.is-article-visible #footer {
-			-moz-transform: scale(0.95);
-			-webkit-transform: scale(0.95);
-			-ms-transform: scale(0.95);
-			transform: scale(0.95);
-			-moz-filter: blur(0.1rem);
-			-webkit-filter: blur(0.1rem);
-			-ms-filter: blur(0.1rem);
-			filter: blur(0.1rem);
-			opacity: 0;
-		}
-
-		body.is-preload #footer {
-			opacity: 0;
-		}
-
-		#hobby .image:before {
-			display: none; /* Hides the overlay for the hobby image */
-		}
-
-		
+	
+	/* A vertical line that runs down the left edge */
+	.blog-timeline::after {
+		content: "";
+		position: absolute;
+		left: 1rem;              /* Aligns with the timeline “dot” below */
+		top: 0;
+		width: 2px;
+		height: 100%;
+		background-color: #252222; /* Match your site’s text color */
+		opacity: 0.4;           /* Slight fade so it’s not too bold */
+		z-index: -1;
+	}
+	
+	/* Each item container */
+	.timeline-item {
+		position: relative;
+		margin: 2rem 0;
+		padding-left: 2rem;      /* Leaves space for the dot */
+	}
+	
+	/* The “dot” before each item */
+	.timeline-item::before {
+		content: "";
+		position: absolute;
+		left: 1rem;              /* Matches the vertical line’s left position */
+		top: 0.5rem;             /* Nudges the dot down a bit */
+		width: 0.8rem;
+		height: 0.8rem;
+		background-color: #252222; 
+		border-radius: 50%;
+	}
+	
+	/* Date styling */
+	.timeline-date {
+		font-weight: bold;
+		margin-bottom: 0.3rem;
+		color: #252222;          /* Keep consistent with your palette */
+	}
+	
+	/* Content link styling */
+	.timeline-content a {
+		color: #252222;
+		text-decoration: none;
+		border: 0;               /* Remove dotted underline if you like */
+		font-weight: 500;        
+		line-height: 1.5;        
+	}
+	
+	/* Optional: On hover, change the link color slightly */
+	.timeline-content a:hover {
+		color: #000;             /* Or a darker/lighter shade */
+	}
+	
