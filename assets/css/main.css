@@ -1705,44 +1705,36 @@ input, select, textarea {
 		opacity: 0.4;           /* Slight fade so it’s not too bold */
 		z-index: -1;
 	}
-	
+	/* Timeline CSS */
 	/* Each item container */
-	.timeline-item {
-		position: relative;
-		margin: 2rem 0;
-		padding-left: 2rem;      /* Leaves space for the dot */
-	}
-	
-	/* The “dot” before each item */
-	.timeline-item::before {
-		content: "";
-		position: absolute;
-		left: 1rem;              /* Matches the vertical line’s left position */
-		top: 0.5rem;             /* Nudges the dot down a bit */
-		width: 0.8rem;
-		height: 0.8rem;
-		background-color: #252222; 
-		border-radius: 50%;
-	}
-	
-	/* Date styling */
-	.timeline-date {
-		font-weight: bold;
-		margin-bottom: 0.3rem;
-		color: #252222;          /* Keep consistent with your palette */
-	}
-	
-	/* Content link styling */
-	.timeline-content a {
-		color: #252222;
-		text-decoration: none;
-		border: 0;               /* Remove dotted underline if you like */
-		font-weight: 500;        
-		line-height: 1.5;        
-	}
-	
-	/* Optional: On hover, change the link color slightly */
-	.timeline-content a:hover {
-		color: #000;             /* Or a darker/lighter shade */
-	}
-	
+	.blog-timeline {
+		/* Reset default list spacing if needed */
+		margin: 0;
+		padding: 0;
+	  }
+	  
+	  .timeline-item {
+		margin-bottom: 2rem; /* Space between posts */
+	  }
+	  
+	  /* The Title */
+	  .post-title {
+		display: block;          /* Ensures each title is on its own line */
+		font-size: 1.2rem;       /* Tweak to your preference */
+		font-weight: 600;        /* A bit bolder for the title */
+		color: #252222;          /* Matches your palette */
+		text-decoration: none;   /* Remove link underline if desired */
+		margin-bottom: 0.2rem;   /* Small gap above the date */
+	  }
+	  
+	  .post-title:hover {
+		color: #000; /* Slightly darker on hover */
+	  }
+	  
+	  /* The Date */
+	  .post-date {
+		font-size: 0.9rem;       
+		color: #888;             /* Lighter text for the date */
+		margin-left: 0.05rem;    /* Tiny offset if you want to align with title */
+	  }
+	  
