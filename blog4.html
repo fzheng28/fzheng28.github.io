@@ -83,7 +83,7 @@
   <h2>Behind the Scenes: How BioMe Works</h2>
 
   <p>
-    BioMe uses human pose estimation (HPE) to understand how people move in video. HPE is the task of detecting the location of a person’s body joints (head, shoulders, elbows, wrists, hips, knees, ankles, etc.) in images or video. These detected joints or key points can be connected to form a “skeleton” representing the person’s pose. Once a skeleton is generated, it becomes possible to analyze different motions, postures, or even fine-grained actions. Most current HPE methods focus on 2D pose estimation, which aims to locate the x and y coordinates of each joint in an image. There are two major approaches to 2D pose estimation:
+    BioMe uses human pose estimation (HPE) to understand how people move in video. HPE is the task of detecting the location of a person’s body joints (head, shoulders, elbows, wrists, hips, knees, ankles, etc.) in images or video. These detected joints or key points can be connected to form a “skeleton” representing the person’s pose. Once a skeleton is generated, it becomes possible to analyze different motions, postures, or even fine-grained actions. Most current HPE methods focus on 2D pose estimation, which aims to locate the x and y coordinates of each joint in an image. There are two major approaches to pose estimation:
   </p>
 
   <h4>Top-Down Approach</h4>
@@ -97,10 +97,6 @@
     <li>Step 1: Detect all joints (key points) across the entire image without focusing on individual persons.</li>
     <li>Step 2: Cluster or associate these joints to form skeletons for each person.</li>
   </ul>
-
-  <p>
-    In recent years, 3D pose estimation has also gained traction. It extends the predicted coordinates to (x, y, z)—i.e., it includes an additional depth dimension. This can be achieved through multi-view geometry (using multiple cameras), specialized sensors (such as depth cameras), or deep learning models that “lift” 2D key points into 3D.
-  </p>
 
   <h3>Examples of Pose Estimation Methods</h3>
 
