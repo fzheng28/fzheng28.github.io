@@ -1,66 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Machine Learning for CRISPR</title>
-<style>
-    .back-button {
-    background-color: #ffeacb;
-    color: rgb(0, 0, 0);
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 20px;
-    display: inline-block;
-  }
-  .back-button:hover {
-    background-color: #f58d0d;
-  }
-  body {
-    background-color: rgba(243, 192, 134, 0.966);
-    font-family: Arial, sans-serif;
-    margin: 20px;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: Arial, sans-serif;
-  }
-  code {
-    background-color: #f0f0f0;
-    padding: 2px 4px;
-    font-family: Consolas, monospace;
-    font-size: 0.95em;
-  }
-  .fixed-width {
-    width: 400px; /* Set your desired fixed width */
-    margin: 40px auto; /* Center the container horizontally and add top/bottom margin */
-    background-color: rgba(243, 192, 134, 0.966); /* Ensure background matches blog1.html */
-    padding: 40px; /* Add padding for better spacing */
-    box-sizing: border-box; /* Include padding within the total width */
-    border-radius: 8px; /* Optional: Rounded corners for aesthetics */
-    font-size: 1.1em; /* Optional: Adjust font size for readability */
-    line-height: 1.5; /* Optional: Improve text readability */
-    overflow: hidden; /* Prevent overflow */
-    white-space: nowrap; /* Prevent text from wrapping */
-    text-overflow: ellipsis; /* Add ellipsis if text overflows */
-}
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Machine Learning for CRISPR</title>
 
-/* Optional: Allow some flexibility on very small screens */
-@media (max-width: 620px) {
-    .fixed-width {
-        width: 90%; /* Adjust width for smaller screens */
-        white-space: normal; /* Allow text to wrap on small screens */
-        overflow: visible; /* Allow overflow if necessary */
-        text-overflow: clip; /* Remove ellipsis on small screens */
+  <!-- Twitter Widget (for the Twitter follow button) -->
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  <style>
+    /* Reset and Basic Box Sizing */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-}
-</style>
+
+    body {
+      background-color: rgba(243, 192, 134, 0.966);
+      font-family: Arial, sans-serif;
+    }
+
+    /* Fixed Header */
+    header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 60px; /* Header height */
+      background-color: #ffeacb; 
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+    .logo {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+    }
+
+    /* Navigation Links */
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+    nav ul li {
+      margin-left: 20px;
+    }
+    nav ul li a {
+      color: #000;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    /* Social Links (Twitter, LinkedIn, etc.) */
+    .social-links {
+      margin-left: 20px;
+      display: flex;
+      align-items: center;
+    }
+    .social-links a {
+      margin-right: 10px;
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
+    }
+    .social-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main Container (Blog + Sidebar) */
+    .container {
+      display: flex;
+      width: 90%;
+      max-width: 1200px;
+      margin: 80px auto 40px auto;
+    }
+
+    /* Main Blog Content */
+    .main-content {
+      flex: 3;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      margin-right: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    .main-content h1, .main-content h2, .main-content h3 {
+      margin-bottom: 0.6em;
+    }
+    .main-content p, .main-content ul, .main-content li {
+      margin-bottom: 1em;
+    }
+    .main-content ul {
+      list-style: disc;
+      margin-left: 1.5em;
+    }
+    .main-content code {
+      background-color: #f0f0f0;
+      padding: 2px 4px;
+      font-family: Consolas, monospace;
+      font-size: 0.95em;
+    }
+
+    /* Upvote & Views Container */
+    .post-stats {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .views {
+      margin-right: 20px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .upvote-btn {
+      background-color: #f58d0d;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      margin-right: 8px;
+    }
+    .upvote-btn:hover {
+      background-color: #ffb56f;
+    }
+    .upvote-count {
+      font-size: 0.95rem;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+
+    /* A second stats area above comments */
+    .post-stats-bottom {
+      margin-top: 40px; /* Some spacing above to separate from text */
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    /* If you want a “disabled” look for upvote after user upvotes */
+    .upvote-btn.disabled {
+      background-color: #ccc !important;
+      cursor: not-allowed;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      flex: 1;
+      background-color: #f7f7f7;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      height: fit-content;
+    }
+    .sidebar h2 {
+      margin-bottom: 10px;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .sidebar ul li {
+      margin-bottom: 8px;
+    }
+    .sidebar ul li a {
+      color: #000;
+      text-decoration: none;
+      border-bottom: dotted 1px #999;
+    }
+    .sidebar ul li a:hover {
+      border-bottom-color: transparent;
+    }
+
+    /* Comments Section */
+    .comments {
+      margin-top: 40px;
+    }
+    .comments h2 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+    }
+    .comments form label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    .comments form input[type="text"],
+    .comments form textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .comments form textarea {
+      height: 80px; 
+      resize: vertical; 
+    }
+    .comments form button {
+      background-color: #f58d0d;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 16px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .comments form button:hover {
+      background-color: #ffb56f;
+    }
+    .comment-block {
+      margin: 15px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+      background-color: #fafafa;
+    }
+    .comment-block strong {
+      font-weight: bold;
+    }
+
+  </style>
 </head>
 <body>
-<a href="index.html#blog" class="back-button">Back to Blog Page</a>
+
+  <!-- Fixed Header -->
+  <header>
+    <div class="logo">Fengyi Zheng</div>
+    
+    <div class="header-right">
+      <!-- Navigation -->
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#blog">Blog</a></li>
+        </ul>
+      </nav>
+
+      <!-- Social Links (Twitter, LinkedIn, etc.) -->
+      <div class="social-links">
+        <!-- Twitter 'Follow' Button -->
+        <a href="https://twitter.com/intent/follow?screen_name=zheng_fengyi"
+           class="twitter-follow-button"
+           data-show-count="false">
+          Follow @YourTwitterHandle
+        </a>
+        <!-- LinkedIn link -->
+        <a href="https://www.linkedin.com/in/fengyi-zheng/" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Main Content (White Box) -->
+    <div class="main-content">
+
+      <!-- Post Stats (TOP) -->
+      <!-- <div class="post-stats" id="topStats">
+        <div class="views" id="viewCountTop">Views: 1</div>
+
+        <button class="upvote-btn" id="upvoteBtnTop">Upvote</button>
+        <div class="upvote-count" id="upvoteCountTop">0</div> Upvotes
+      </div> -->
 
   <h1>BioMe’s Value Proposition</h1>
 
@@ -157,8 +376,179 @@
     I’ll walk through a Python script for training your own model using CNNs to recognize various actions in video footage. Stay tuned!
   </p>
 
-  <!-- Optional back button at the bottom -->
-  <a href="index.html" class="back-button">Back to Blog Page</a>
+  <!-- SECOND STATS SECTION (BOTTOM, above comments) -->
+      <!-- <div class="post-stats-bottom" id="bottomStats">
+        <div class="views" id="viewCountBottom">Views: 1</div>
 
+        <button class="upvote-btn" id="upvoteBtnBottom">Upvote</button>
+        <div class="upvote-count" id="upvoteCountBottom">0</div> Upvotes
+      </div> -->
+
+      <!-- COMMENTS SECTION -->
+      <!-- <div class="comments">
+        <h2>Comments</h2>
+        <form id="commentForm">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required/>
+
+          <label for="comment">Your Comment</label>
+          <textarea id="comment" name="comment" required></textarea>
+
+          <button type="submit">Submit</button>
+        </form>
+
+        <div id="commentList"></div>
+      </div>
+
+    </div> -->
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>Other Blog Posts</h2>
+      <ul>
+        <li><a href="blog1.html">Machine Learning for CRISPR</a></li>
+        <li><a href="blog2.html">CRISPR Training Data</a></li>
+        <li><a href="blog3.html">Reflections on My Time at the Broad Institute</a></li>
+        <li><a href="blog5.html">Action Recognition CNN Tutorial</a></li>
+      </ul>
+    </aside>
+  </div>
+
+  <script>
+    const API_BASE = "https://web-backend-j111.onrender.com"; // Your backend
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // 1) On load, increment view count, then load
+      incrementViewCount();
+      loadViewCount();
+
+      // 2) Load upvote count
+      loadUpvoteCount();
+
+      // 3) Load comments
+      loadComments();
+
+      // Grab upvote buttons
+      const upvoteBtnTop    = document.getElementById('upvoteBtnTop');
+      const upvoteBtnBottom = document.getElementById('upvoteBtnBottom');
+
+      // OPTIONAL: If you only want one upvote per session, check sessionStorage
+      if (sessionStorage.getItem("hasUpvoted") === "true") {
+        disableUpvoteBtn(upvoteBtnTop);
+        disableUpvoteBtn(upvoteBtnBottom);
+      }
+
+      // Add click handlers
+      upvoteBtnTop.addEventListener('click', handleUpvote);
+      upvoteBtnBottom.addEventListener('click', handleUpvote);
+
+      // 4) Comments form
+      const commentForm = document.getElementById('commentForm');
+      commentForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const nameVal = document.getElementById('name').value.trim();
+        const commentVal = document.getElementById('comment').value.trim();
+
+        if (!nameVal || !commentVal) {
+          alert('Please fill out both fields.');
+          return;
+        }
+
+        // POST comment
+        fetch(`${API_BASE}/api/comments`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name: nameVal, comment: commentVal })
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.success) {
+              loadComments();
+              commentForm.reset();
+            } else {
+              alert(data.error || "Error posting comment.");
+            }
+          })
+          .catch(err => console.error("Comment post error:", err));
+      });
+    });
+
+    // ========== Helper Functions ==========
+
+    function incrementViewCount() {
+      fetch(`${API_BASE}/api/views/increment`, { method: "POST" })
+        .catch(err => console.error("View increment error:", err));
+    }
+
+    function loadViewCount() {
+      fetch(`${API_BASE}/api/views`)
+        .then(res => res.json())
+        .then(data => {
+          // Update both top & bottom
+          document.getElementById('viewCountTop').textContent = `Views: ${data.viewCount}`;
+          document.getElementById('viewCountBottom').textContent = `Views: ${data.viewCount}`;
+        })
+        .catch(err => console.error("View count error:", err));
+    }
+
+    function loadUpvoteCount() {
+      fetch(`${API_BASE}/api/upvotes`)
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('upvoteCountTop').textContent = data.upvoteCount;
+          document.getElementById('upvoteCountBottom').textContent = data.upvoteCount;
+        })
+        .catch(err => console.error("Upvote count error:", err));
+    }
+
+    function loadComments() {
+      fetch(`${API_BASE}/api/comments`)
+        .then(res => res.json())
+        .then(data => {
+          const commentList = document.getElementById('commentList');
+          commentList.innerHTML = "";
+          data.comments.forEach(c => {
+            const div = document.createElement('div');
+            div.classList.add('comment-block');
+            div.innerHTML = `<strong>${c.name}</strong><p>${c.comment}</p>`;
+            commentList.appendChild(div);
+          });
+        })
+        .catch(err => console.error("Comments load error:", err));
+    }
+
+    // Called when user clicks "Upvote" at top OR bottom
+    function handleUpvote() {
+      // If only 1 upvote per session, check session:
+      if (sessionStorage.getItem("hasUpvoted") === "true") {
+        alert("You already upvoted this session!");
+        return;
+      }
+
+      fetch(`${API_BASE}/api/upvotes`, { method: "POST" })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            // Update both top & bottom counters
+            document.getElementById('upvoteCountTop').textContent    = data.upvoteCount;
+            document.getElementById('upvoteCountBottom').textContent = data.upvoteCount;
+
+            // Mark session as upvoted
+            sessionStorage.setItem("hasUpvoted", "true");
+
+            // Disable the upvote buttons
+            disableUpvoteBtn(document.getElementById('upvoteBtnTop'));
+            disableUpvoteBtn(document.getElementById('upvoteBtnBottom'));
+          }
+        })
+        .catch(err => console.error("Upvote error:", err));
+    }
+
+    function disableUpvoteBtn(btn) {
+      btn.classList.add("disabled");
+      btn.disabled = true;
+      btn.textContent = "Upvoted";
+    }
+  </script>
 </body>
 </html>
