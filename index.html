@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fengyi Zheng</title>
+    <meta name="description" content="Portfolio of Fengyi Zheng, founder of BioMe and former Computational Associate at the Broad Institute of MIT and Harvard" />
+    <meta name="author" content="Fengyi Zheng" />
+
+    <meta property="og:title" content="Fengyi Zheng" />
+    <meta property="og:description" content="Founder of BioMe, accelerating drug development for neurodegenerative disorders with AI-powered motion tracking" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="./images/fz.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@zheng_fengyi" />
+    <meta name="twitter:image" content="./images/fz.png" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="./images/fz.png" type="image/png">
+
+    <!-- For GitHub Pages with HashRouter -->
+    <script type="text/javascript">
+      // Redirect 404 to index.html with hash router for GitHub Pages
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect != location.href) {
+          history.replaceState(null, null, redirect.replace(location.origin, ''));
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
