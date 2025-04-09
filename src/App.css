@@ -1,0 +1,67 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+}
+
+.font-space {
+  font-family: 'Space Mono', monospace;
+}
+
+/* Subtle hover effects */
+a {
+  transition: all 0.2s ease;
+}
+
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px -15px rgba(238, 126, 56, 0.2);
+}
+
+/* Blog card tilt effect */
+.group:hover {
+  transform-style: preserve-3d;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Text underline effect */
+.hover-underline {
+  position: relative;
+}
+
+.hover-underline:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -1px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.hover-underline:hover:after {
+  width: 100%;
+}
+
+/* Gradient backgrounds */
+.bg-gradient-soft {
+  background: linear-gradient(135deg, #F5F9FF 0%, #EDF9F3 50%, #FFF9E6 100%);
+}
+
+.bg-gradient-warm {
+  background: linear-gradient(135deg, #FFF5E9 0%, #FFF8ED 100%);
+}
