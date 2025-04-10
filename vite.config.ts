@@ -16,5 +16,8 @@ export default defineConfig(({ mode }) => ({
   server: {
     port: 8080,
     host: '::',
+  },
+  build: {
+    outDir: 'docs', // Change build output directory to 'docs' for GitHub Pages
   }
 }))
