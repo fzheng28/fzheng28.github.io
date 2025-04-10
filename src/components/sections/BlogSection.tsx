@@ -31,7 +31,7 @@ const BlogSection: React.FC = () => {
         
         <BlogCard
           title="Reflections on My Time at the Broad Institute"
-          date="Dec 13, 2025"
+          date="Dec 13, 2024"
           description="Personal reflections on my research journey at the Broad Institute of MIT and Harvard, highlighting key learnings and experiences."
           image="./images/broad-institute.png"
           url="/blog/reflections-broad-institute"
