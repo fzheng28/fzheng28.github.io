@@ -1,4 +1,3 @@
-
 import React from "react";
 
 const HeroSection = () => {
@@ -11,14 +10,14 @@ const HeroSection = () => {
         
         <div className="space-y-6 text-lg text-orange-800">
           <p>
-            Currently, I'm building <a href="/blog/biome" className="border-b border-orange-400 hover:border-orange-600">BioMe</a>, 
+            Currently, I'm building <a href="#/blog/biome" className="border-b border-orange-400 hover:border-orange-600">BioMe</a>, 
             where we're accelerating drug development for neurodegenerative disorders with AI-powered motion tracking,
             making clinical trials more objective, efficient, and patient-friendly by transforming how motor function is measured.
           </p>
           
           <p>
-            Previously, I worked at the <a href="/blog/reflections-broad-institute" className="border-b border-orange-400 hover:border-orange-600">Broad Institute of MIT and Harvard</a> contributing 
-            to research in <a href="/blog/machine-learning-crispr" className="border-b border-orange-400 hover:border-orange-600">CRISPR technology</a>.
+            Previously, I worked at the <a href="#/blog/reflections-broad-institute" className="border-b border-orange-400 hover:border-orange-600">Broad Institute of MIT and Harvard</a> contributing 
+            to research in <a href="#/blog/machine-learning-crispr" className="border-b border-orange-400 hover:border-orange-600">CRISPR technology</a>.
           </p>
 
           <p>
