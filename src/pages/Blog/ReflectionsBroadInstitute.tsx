@@ -7,7 +7,7 @@ const ReflectionsBroadInstitute = () => {
   return (
     <BlogPost
       title="Reflections on My Time at the Broad Institute"
-      date="Dec 13, 2025"
+      date="Dec 13, 2024"
       image="/images/broad-institute.png"
       content={
         <div>
