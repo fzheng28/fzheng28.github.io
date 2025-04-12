@@ -5,7 +5,7 @@ const HeroSection = () => {
     <section className="py-16 md:py-24">
       <div className="max-w-3xl">
         <h1 className="text-4xl md:text-5xl font-bold text-orange-900 mb-8 leading-tight">
-          Fengyi is passionate about driving meaningful change in healthcare.
+          Fengyi Zheng
         </h1>
         
         <div className="space-y-6 text-lg text-orange-800">
