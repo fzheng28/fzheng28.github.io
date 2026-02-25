@@ -13,6 +13,14 @@ const BlogSection: React.FC = () => {
       </p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <BlogCard
+          title="Attention Is All You Need: Time to Lock In"
+          date="Feb 25, 2026"
+          description="Why we built LockIn: a focus co-pilot that tracks attention signals, nudges distraction in real time, and helps users build self-awareness."
+          image="./images/fz.png"
+          url="/blog/lockin"
+        />
+
         <BlogCard 
           title="Machine Learning for CRISPR"
           date="Dec 9, 2024"
