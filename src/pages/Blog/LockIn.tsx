@@ -132,6 +132,32 @@ const LockIn = () => {
               (a website on ballroom)
             </li>
           </ul>
+          <p className="text-sm text-orange-700 mb-3">
+            Screenshot naming uses <code>example-link</code> (for example:
+            <code> 1-1</code> means Example 1, Link 1).
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <img
+              src="/images/example1-1.png"
+              alt="Example 1 Link 1: AWS AI agents page"
+              className="w-full rounded-lg border border-orange-200"
+            />
+            <img
+              src="/images/example1-2.png"
+              alt="Example 1 Link 2: YouTube AI agents video"
+              className="w-full rounded-lg border border-orange-200"
+            />
+            <img
+              src="/images/example1-3.png"
+              alt="Example 1 Link 3: K-pop video flagged by LockIn"
+              className="w-full rounded-lg border border-orange-200"
+            />
+            <img
+              src="/images/example1-4.png"
+              alt="Example 1 Link 4: Ballroom page flagged by LockIn"
+              className="w-full rounded-lg border border-orange-200"
+            />
+          </div>
 
           <h4 className="text-lg font-bold text-orange-800 mt-6 mb-2 font-space">
             Example 2
@@ -176,6 +202,27 @@ const LockIn = () => {
               (a YouTube video on AI agents)
             </li>
           </ul>
+          <p className="text-sm text-orange-700 mb-3">
+            Example 2 screenshot mapping: <code>2-1</code>, <code>2-2</code>,{" "}
+            <code>2-3</code>.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <img
+              src="/images/example2-1.png"
+              alt="Example 2 Link 1: Ballroom website"
+              className="w-full rounded-lg border border-orange-200"
+            />
+            <img
+              src="/images/example2-2.png"
+              alt="Example 2 Link 2: Ballroom YouTube video"
+              className="w-full rounded-lg border border-orange-200"
+            />
+            <img
+              src="/images/example2-3.png"
+              alt="Example 2 Link 3: AI video flagged as outlier"
+              className="w-full rounded-lg border border-orange-200 md:col-span-2"
+            />
+          </div>
 
           <p className="mb-4">
             The model looked at the footprint, saw dance content, and treated the
