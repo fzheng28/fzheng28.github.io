@@ -8,6 +8,7 @@ import BioMe from '@/pages/Blog/BioMe';
 import ReflectionsBroadInstitute from '@/pages/Blog/ReflectionsBroadInstitute';
 import CNNTrainingTutorial from '@/pages/Blog/CNNTrainingTutorial';
 import GeometricTransformations from '@/pages/Blog/GeometricTransformations';
+import LockIn from '@/pages/Blog/LockIn';
 import NotFound from '@/pages/NotFound';
 import { Toaster } from "@/components/ui/toaster";
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/blog/reflections-broad-institute" element={<ReflectionsBroadInstitute />} />
         <Route path="/blog/cnn-training-tutorial" element={<CNNTrainingTutorial />} />
         <Route path="/blog/3d-geometric-transformations" element={<GeometricTransformations />} />
+        <Route path="/blog/lockin" element={<LockIn />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster />
