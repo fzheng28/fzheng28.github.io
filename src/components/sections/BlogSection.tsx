@@ -17,7 +17,7 @@ const BlogSection: React.FC = () => {
           title="Attention Is All You Need: Time to LockIn"
           date="Mar 3, 2026"
           description="Why I built LockIn: an attention-aware browser extension that flags distraction based on tab context instead of static blocklists."
-          image="./images/fz.png"
+          image="./images/lockin-cover.svg"
           url="/blog/lockin"
         />
 

@@ -6,6 +6,7 @@ const LockIn = () => {
     <BlogPost
       title="Attention Is All You Need: Time to LockIn"
       date="Mar 3, 2026"
+      image="/images/lockin-cover.svg"
       content={
         <div>
           <p className="mb-4">
