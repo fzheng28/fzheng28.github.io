@@ -140,22 +140,22 @@ const LockIn = () => {
             <img
               src="/images/example1-1.png"
               alt="Example 1 Link 1: AWS AI agents page"
-              className="w-full rounded-lg border border-orange-200"
+              className="w-full h-64 object-contain bg-orange-50 rounded-lg border border-orange-200"
             />
             <img
               src="/images/example1-2.png"
               alt="Example 1 Link 2: YouTube AI agents video"
-              className="w-full rounded-lg border border-orange-200"
+              className="w-full h-64 object-contain bg-orange-50 rounded-lg border border-orange-200"
             />
             <img
               src="/images/example1-3.png"
               alt="Example 1 Link 3: K-pop video flagged by LockIn"
-              className="w-full rounded-lg border border-orange-200"
+              className="w-full h-64 object-contain bg-orange-50 rounded-lg border border-orange-200"
             />
             <img
               src="/images/example1-4.png"
               alt="Example 1 Link 4: Ballroom page flagged by LockIn"
-              className="w-full rounded-lg border border-orange-200"
+              className="w-full h-64 object-contain bg-orange-50 rounded-lg border border-orange-200"
             />
           </div>
 
@@ -210,17 +210,17 @@ const LockIn = () => {
             <img
               src="/images/example2-1.png"
               alt="Example 2 Link 1: Ballroom website"
-              className="w-full rounded-lg border border-orange-200"
+              className="w-full h-64 object-contain bg-orange-50 rounded-lg border border-orange-200"
             />
             <img
               src="/images/example2-2.png"
               alt="Example 2 Link 2: Ballroom YouTube video"
-              className="w-full rounded-lg border border-orange-200"
+              className="w-full h-64 object-contain bg-orange-50 rounded-lg border border-orange-200"
             />
             <img
               src="/images/example2-3.png"
               alt="Example 2 Link 3: AI video flagged as outlier"
-              className="w-full rounded-lg border border-orange-200 md:col-span-2"
+              className="w-full h-64 object-contain bg-orange-50 rounded-lg border border-orange-200"
             />
           </div>
 
