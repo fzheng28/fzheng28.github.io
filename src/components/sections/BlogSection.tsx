@@ -4,7 +4,82 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 
+interface BlogCardProps {
+  title: string;
+  date: string;
+  description: string;
+  image: string;
+  url: string;
+}
+
+interface BlogEntry extends BlogCardProps {
+  sortDate: string;
+}
+
+const blogEntries: BlogEntry[] = [
+  {
+    title: "Attention Is All You Need: Time to LockIn",
+    date: "Mar 3, 2026",
+    sortDate: "2026-03-03",
+    description: "Why I built LockIn: an attention-aware browser extension that flags distraction based on tab context instead of static blocklists.",
+    image: "./images/lockin-cover.svg",
+    url: "/blog/lockin",
+  },
+  {
+    title: "3D Geometric Transformations and Alignment",
+    date: "Feb 14, 2025",
+    sortDate: "2025-02-14",
+    description: "Exploring the mathematics behind 3D geometric transformations and their applications in computer vision and motion tracking.",
+    image: "./images/geometric-transformations.png",
+    url: "/blog/3d-geometric-transformations",
+  },
+  {
+    title: "Action Recognition CNN Training Tutorial",
+    date: "Jan 21, 2025",
+    sortDate: "2025-01-21",
+    description: "A comprehensive guide to training convolutional neural networks for action recognition in video sequences.",
+    image: "./images/cnn-training.png",
+    url: "/blog/cnn-training-tutorial",
+  },
+  {
+    title: "BioMe",
+    date: "Jan 18, 2025",
+    sortDate: "2025-01-18",
+    description: "The journey of founding BioMe and our mission to transform clinical trials for neurodegenerative disorders using AI-powered motion tracking.",
+    image: "./images/biome.png",
+    url: "/blog/biome",
+  },
+  {
+    title: "Reflections on My Time at the Broad Institute",
+    date: "Dec 13, 2024",
+    sortDate: "2024-12-13",
+    description: "Personal reflections on my research journey at the Broad Institute of MIT and Harvard, highlighting key learnings and experiences.",
+    image: "./images/broad-institute.png",
+    url: "/blog/reflections-broad-institute",
+  },
+  {
+    title: "CRISPR Training Data",
+    date: "Dec 10, 2024",
+    sortDate: "2024-12-10",
+    description: "An in-depth look at gathering and preprocessing training data for CRISPR machine learning models.",
+    image: "./images/crispr-training-data.png",
+    url: "/blog/crispr-training-data",
+  },
+  {
+    title: "Machine Learning for CRISPR",
+    date: "Dec 9, 2024",
+    sortDate: "2024-12-09",
+    description: "Exploring how machine learning applications can enhance CRISPR technology, improving precision and effectiveness in gene editing.",
+    image: "./images/machine-learning-crispr.png",
+    url: "/blog/machine-learning-crispr",
+  },
+];
+
 const BlogSection: React.FC = () => {
+  const sortedEntries = [...blogEntries].sort(
+    (a, b) => new Date(b.sortDate).getTime() - new Date(a.sortDate).getTime()
+  );
+
   return (
     <div id="blogs" className="mb-16">
       <h2 className="text-3xl font-bold text-orange-800 mb-6 font-space">Blog & Thoughts</h2>
@@ -13,73 +88,20 @@ const BlogSection: React.FC = () => {
       </p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <BlogCard
-          title="Attention Is All You Need: Time to LockIn"
-          date="Mar 3, 2026"
-          description="Why I built LockIn: an attention-aware browser extension that flags distraction based on tab context instead of static blocklists."
-          image="./images/lockin-cover.svg"
-          url="/blog/lockin"
-        />
-
-        <BlogCard 
-          title="Machine Learning for CRISPR"
-          date="Dec 9, 2024"
-          description="Exploring how machine learning applications can enhance CRISPR technology, improving precision and effectiveness in gene editing."
-          image="./images/machine-learning-crispr.png"
-          url="/blog/machine-learning-crispr"
-        />
-        
-        <BlogCard
-          title="CRISPR Training Data"
-          date="Dec 10, 2024"
-          description="An in-depth look at gathering and preprocessing training data for CRISPR machine learning models."
-          image="./images/crispr-training-data.png"
-          url="/blog/crispr-training-data"
-        />
-        
-        <BlogCard
-          title="Reflections on My Time at the Broad Institute"
-          date="Dec 13, 2024"
-          description="Personal reflections on my research journey at the Broad Institute of MIT and Harvard, highlighting key learnings and experiences."
-          image="./images/broad-institute.png"
-          url="/blog/reflections-broad-institute"
-        />
-        
-        <BlogCard
-          title="BioMe"
-          date="Jan 18, 2025"
-          description="The journey of founding BioMe and our mission to transform clinical trials for neurodegenerative disorders using AI-powered motion tracking."
-          image="./images/biome.png"
-          url="/blog/biome"
-        />
-        
-        <BlogCard
-          title="Action Recognition CNN Training Tutorial"
-          date="Jan 21, 2025"
-          description="A comprehensive guide to training convolutional neural networks for action recognition in video sequences."
-          image="./images/cnn-training.png"
-          url="/blog/cnn-training-tutorial"
-        />
-        
-        <BlogCard
-          title="3D Geometric Transformations and Alignment"
-          date="Feb 14, 2025"
-          description="Exploring the mathematics behind 3D geometric transformations and their applications in computer vision and motion tracking."
-          image="./images/geometric-transformations.png"
-          url="/blog/3d-geometric-transformations"
-        />
+        {sortedEntries.map((entry) => (
+          <BlogCard
+            key={entry.url}
+            title={entry.title}
+            date={entry.date}
+            description={entry.description}
+            image={entry.image}
+            url={entry.url}
+          />
+        ))}
       </div>
     </div>
   );
 };
-
-interface BlogCardProps {
-  title: string;
-  date: string;
-  description: string;
-  image: string;
-  url: string;
-}
 
 const BlogCard: React.FC<BlogCardProps> = ({ title, date, description, image, url }) => {
   return (
