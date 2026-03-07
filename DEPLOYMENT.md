@@ -1,56 +1,31 @@
-
 # Deploying to GitHub Pages
 
-This website is configured to be easily deployed to GitHub Pages using GitHub Actions.
+This repo now deploys automatically with GitHub Actions.
 
-## Setup Instructions
+## One-time GitHub setup
 
-1. Push this repository to your GitHub account.
+1. Go to your repository on GitHub.
+2. Open `Settings` -> `Pages`.
+3. Under `Build and deployment`, set `Source` to `GitHub Actions`.
+4. Save.
 
-2. Go to your repository settings on GitHub:
-   - Navigate to Settings > Pages
-   - Under "Source", select "GitHub Actions" 
+No Personal Access Token is required. The workflow uses the built-in `GITHUB_TOKEN`.
 
-3. Create a Personal Access Token (PAT):
-   - Go to GitHub → Settings → Developer settings → Personal access tokens
-   - Click "Fine-grained tokens" or "Tokens (classic)"
-   - Select the repo you want to deploy
-   - Give it appropriate permissions (repo access for classic tokens, or Contents: Read and Write for fine-grained)
-   - Copy the token
+## Automatic deploy flow
 
-4. Add the token to your GitHub repo as a secret:
-   - Go to your repo → Settings → Secrets and variables → Actions
-   - Add a new secret named `PERSONAL_TOKEN` with your PAT as the value
+1. You push to `master`.
+2. GitHub Actions runs `.github/workflows/deploy-pages.yml`.
+3. It installs dependencies, builds with `npm run build`, and deploys the `docs/` output.
+4. Site updates at `https://fzheng28.github.io` (usually within a couple of minutes).
 
-5. The configured workflow will:
-   - Build the site with Vite
-   - Deploy it to the `gh-pages` branch
-   - Make it available at `https://fzheng28.github.io`
+## Trigger a deploy manually
 
-6. Important notes for troubleshooting:
-   - Make sure the GitHub Actions workflow has run successfully (check the Actions tab)
-   - This site uses HashRouter for compatibility with GitHub Pages
-   - Wait a few minutes after deployment for changes to propagate
+1. Open the `Actions` tab in GitHub.
+2. Open `Deploy to GitHub Pages`.
+3. Click `Run workflow`.
 
-## Manual Deployment
+## Troubleshooting
 
-If you prefer to deploy manually:
-
-```bash
-# Install dependencies
-npm install
-
-# Build the site
-npm run build
-
-# Deploy using gh-pages package
-npm install -g gh-pages
-gh-pages -d dist
-```
-
-## Common Issues
-
-- If pages aren't showing up, check the GitHub Pages settings to ensure it's set to deploy from the gh-pages branch
-- Ensure the CNAME file in the public directory has the correct domain
-- If you see dependency errors in GitHub Actions, try running the workflow with `npm install` instead of `npm ci`
-- Make sure your repository is correctly configured as a User Page (username.github.io)
+- If the page does not update, check `Actions` for a failed run and read the logs.
+- If `Pages` is still set to deploy from a branch (for example `master/docs`), switch it to `GitHub Actions`.
+- Hard-refresh your browser (`Cmd+Shift+R`) to bypass cached assets.
