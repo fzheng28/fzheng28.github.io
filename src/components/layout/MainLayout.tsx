@@ -111,7 +111,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             >
               <GraduationCap className="h-5 w-5" />
             </a>
-            <a href="https://twitter.com/zheng_fengyi" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="text-orange-700 hover:text-orange-600">
+            <a href="https://twitter.com/fengyi34003" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="text-orange-700 hover:text-orange-600">
               <Twitter className="h-5 w-5" />
             </a>
           </div>
