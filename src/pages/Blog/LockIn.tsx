@@ -36,8 +36,7 @@ const LockIn = () => {
             >
               LockIn
             </a>
-            : a browser extension that watches for lightweight signals of
-            distraction and surfaces them early enough to matter.
+            : a browser extension that uses an LLM to reason about whether a new tab is distracting based on current context, not based on the domain, but based on what you're already doing.
           </p>
 
           <h2 className="text-2xl font-bold text-orange-800 mt-8 mb-4 font-space">
