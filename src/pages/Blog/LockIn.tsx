@@ -230,22 +230,22 @@ const LockIn = () => {
           </p>
 
           <p className="mb-4">
-            This is the core tension: the model is only as good as the context
+            The model is only as good as the context
             it&apos;s given, and the browser is a messy place. Tabs accumulate. People
             switch between tasks. A leftover tab from earlier can quietly anchor
             the model&apos;s inference in the wrong direction. Right now, LockIn
             handles this partially through user self-reporting: clicking a strike
             button on any site marks it as distracting and adds it to a personal
             blocklist automatically. But knowing which tabs to weight and which to
-            treat as noise is still the most interesting unsolved piece.
+            treat as noise is still an interesting piece for future work.
           </p>
 
           <p className="mb-4">
             Distraction is relational, not absolute. You can&apos;t decide whether a
-            website is distracting without knowing what it&apos;s distracting from. The
-            model doesn&apos;t need to be perfect. It just needs to be fast and
-            directional. Getting nudged a minute into a drift is worth a lot more
-            than getting blocked on a domain that might have been fine.
+            website is distracting without knowing what it&apos;s distracting from. 
+            You can't decide whether a tab is distracting without knowing what it&apos;s 
+            distracting from. Getting flagged the moment you open one you didn&apos;t 
+            realize was pulling you off track is worth more than any static blocklist.
           </p>
 
           <h2 className="text-2xl font-bold text-orange-800 mt-8 mb-4 font-space">
