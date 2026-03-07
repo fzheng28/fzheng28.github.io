@@ -26,22 +26,6 @@ const blogEntries: BlogEntry[] = [
     url: "/blog/lockin",
   },
   {
-    title: "3D Geometric Transformations and Alignment",
-    date: "Feb 14, 2025",
-    sortDate: "2025-02-14",
-    description: "Exploring the mathematics behind 3D geometric transformations and their applications in computer vision and motion tracking.",
-    image: "./images/geometric-transformations.png",
-    url: "/blog/3d-geometric-transformations",
-  },
-  {
-    title: "Action Recognition CNN Training Tutorial",
-    date: "Jan 21, 2025",
-    sortDate: "2025-01-21",
-    description: "A comprehensive guide to training convolutional neural networks for action recognition in video sequences.",
-    image: "./images/cnn-training.png",
-    url: "/blog/cnn-training-tutorial",
-  },
-  {
     title: "BioMe",
     date: "Jan 18, 2025",
     sortDate: "2025-01-18",

@@ -110,12 +110,6 @@ const ReflectionsBroadInstitute = () => {
                   <p className="text-sm text-orange-700 flex items-center mt-1">Read more <ArrowRight className="h-3 w-3 ml-1" /></p>
                 </div>
               </Link>
-              <Link to="/blog/cnn-training-tutorial" className="flex items-center p-4 bg-orange-50 rounded-lg hover:bg-orange-100 transition-colors">
-                <div>
-                  <p className="font-semibold text-orange-800">Action Recognition CNN Training Tutorial</p>
-                  <p className="text-sm text-orange-700 flex items-center mt-1">Read more <ArrowRight className="h-3 w-3 ml-1" /></p>
-                </div>
-              </Link>
             </div>
           </div>
         </div>

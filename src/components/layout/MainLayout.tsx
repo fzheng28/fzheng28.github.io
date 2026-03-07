@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect } from "react";
-import { Mail, Linkedin, Github, Twitter } from "lucide-react";
+import { Mail, Linkedin, Github, Twitter, GraduationCap } from "lucide-react";
 import ContactSection from "../sections/ContactSection";
 import { useLocation, Link } from "react-router-dom";
 
@@ -101,6 +101,15 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             </a>
             <a href="https://github.com/fzheng28" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-orange-700 hover:text-orange-600">
               <Github className="h-5 w-5" />
+            </a>
+            <a
+              href="https://scholar.google.com/citations?user=xL8pwocAAAAJ&hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Google Scholar"
+              className="text-orange-700 hover:text-orange-600"
+            >
+              <GraduationCap className="h-5 w-5" />
             </a>
             <a href="https://twitter.com/zheng_fengyi" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="text-orange-700 hover:text-orange-600">
               <Twitter className="h-5 w-5" />
