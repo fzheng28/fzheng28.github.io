@@ -243,8 +243,7 @@ const LockIn = () => {
           <p className="mb-4">
             Distraction is relational, not absolute. You can&apos;t decide whether a
             website is distracting without knowing what it&apos;s distracting from. 
-            You can't decide whether a tab is distracting without knowing what it&apos;s 
-            distracting from. Getting flagged the moment you open one you didn&apos;t 
+            Getting flagged the moment you open one you didn&apos;t 
             realize was pulling you off track is worth more than any static blocklist.
           </p>
 
