@@ -21,7 +21,7 @@ const blogEntries: BlogEntry[] = [
     title: "Attention Is All You Need: Time to LockIn",
     date: "Mar 3, 2026",
     sortDate: "2026-03-03",
-    description: "Why I built LockIn: a context-aware browser extension that flags distraction based on tab context instead of static blocklists.",
+    description: "LockIn: a context-aware browser extension that flags distraction based on tab context instead of static blocklists.",
     image: "./images/lockin-cover.svg",
     url: "/blog/lockin",
   },

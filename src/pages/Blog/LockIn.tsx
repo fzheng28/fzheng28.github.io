@@ -18,12 +18,28 @@ const LockIn = () => {
           </p>
 
           <p className="mb-4">
-            That observation started a conversation between my friend and me. Not
-            about productivity in the abstract, but about something more specific:
-            the gap between the moment attention drifts and the moment you realize
-            it drifted. That gap is where most of the damage happens. You don&apos;t
-            decide to stop working. You just open one tab, and then suddenly twenty
-            minutes are gone.
+            That observation started as an idea{" "}
+            <a
+              href="https://www.linkedin.com/in/chunrongalicehuang/"
+              className="text-orange-600 hover:text-orange-800 underline"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Chunrong
+            </a>{" "}
+            and I explored together during a hackathon. We were interested in the
+            gap between the moment
+            attention drifts and the moment you realize it drifted. That gap is
+            where most of the damage happens. You don&apos;t decide to stop working.
+            You just open one tab, and then suddenly twenty minutes are gone.
+          </p>
+
+          <p className="mb-4">
+            Since then, I&apos;ve expanded the part I worked on during the
+            hackathon into this version. The part that feels
+            most unique to me is that it doesn&apos;t rely on a generic AI blocker or
+            a static list of banned sites. It uses context to decide what should
+            be blocked.
           </p>
 
           <p className="mb-4">
@@ -36,7 +52,10 @@ const LockIn = () => {
             >
               LockIn
             </a>
-            : a browser extension that uses an LLM to reason about whether a new tab is distracting based on current context, not based on the domain, but based on what you're already doing.
+            : a browser extension that uses an LLM to reason about whether a new
+            tab is distracting based on your current context. Instead of treating
+            distraction as a property of the domain, it looks at what you&apos;re
+            already doing and asks whether the new tab fits.
           </p>
 
           <h2 className="text-2xl font-bold text-orange-800 mt-8 mb-4 font-space">
